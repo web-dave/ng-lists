@@ -1,0 +1,14 @@
+<div class="block">
+  <div class="info">Name</div>
+
+  <a class="btn"></a>
+  <div class="list">
+    <ul>
+      <li *ngFor="let itm of data; let i = index">
+        <a class="list-item">{{ itm.name }}</a>
+        <input type="checkbox" [checked]="itm.erledigt" />
+        <label (click)="checkItem(itm)"></label>
+      </li>
+    </ul>
+  </div>
+</div>

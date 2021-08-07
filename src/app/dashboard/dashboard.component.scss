@@ -1,0 +1,27 @@
+.posts {
+  display: flex;
+  flex-flow: row wrap;
+
+  .post {
+    border: 1px solid #a2a2a2;
+
+    border-radius: 5px;
+    margin: 10px;
+    height: 200px;
+    width: calc((100% / 3) - 20px);
+    padding: 10px;
+    font-size: 25px;
+  }
+
+  &.feature {
+    width: calc(((100% / 3) * 2) - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .posts {
+    .post {
+      width: 100%;
+    }
+  }
+}

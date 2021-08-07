@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="posts">
+    <div
+      class="post"
+      *ngFor="let t of tiles; let i = index"
+      [routerLink]="['list', i]"
+    >
+      <lists-tile></lists-tile>
+    </div>
+  </div>
+</div>
