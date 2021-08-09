@@ -22,19 +22,23 @@ export class DataService {
     );
 
   private lists: { [name: string]: Item[] } = {};
-  private listsBS$ = new BehaviorSubject<Item[]>([]);
+  private listsBS$ = new BehaviorSubject<{ [name: string]: Item[] }>({});
   public lists$ = this.listsBS$
     .asObservable()
-    .pipe(
-      tap((data) => localStorage.setItem('itemList', JSON.stringify(data)))
-    );
+    .pipe(tap((data) => localStorage.setItem('lists', JSON.stringify(data))));
 
   constructor() {
-    let foo = localStorage.getItem('itemList') || '[]';
-    console.log(foo);
+    let items = localStorage.getItem('itemList') || '[]';
+    console.log(items);
 
-    this.items = JSON.parse(foo);
+    this.items = JSON.parse(items);
     this.itemsBS$.next(this.items);
+
+    let lists = localStorage.getItem('lists') || '{}';
+    console.log(lists);
+
+    this.lists = JSON.parse(lists);
+    this.listsBS$.next(this.lists);
   }
 
   deleteItem(i: number) {
@@ -54,8 +58,9 @@ export class DataService {
     this.itemsBS$.next(this.items);
   }
 
-  setErledigt(item: Item) {
-    item.erledigt = !item.erledigt;
-    this.itemsBS$.next(this.items);
+  updateItemList(list: string, item: Item, index: number) {
+    // Das element in der richtigen liste finden und ersetzten
+    this.lists[list][index] = item;
+    this.listsBS$.next(this.lists);
   }
 }

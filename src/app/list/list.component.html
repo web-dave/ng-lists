@@ -4,11 +4,15 @@
   <a class="btn"></a>
   <div class="list">
     <ul>
-      <li *ngFor="let itm of data; let i = index">
-        <a class="list-item">{{ itm.name }}</a>
+      <li *ngFor="let itm of items$ | async; let i = index">
+        <a class="list-item"
+          >{{ itm.name }}&nbsp;{{ itm.preis | currency: "EUR" }}</a
+        >
         <input type="checkbox" [checked]="itm.erledigt" />
-        <label (click)="checkItem(itm)"></label>
+        <label (click)="checkItem(itm, i)"></label>
       </li>
     </ul>
   </div>
 </div>
+<h1>{{ date }}</h1>
+<h1>{{ date | date: "medium" }}</h1>

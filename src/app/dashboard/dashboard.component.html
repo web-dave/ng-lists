@@ -2,8 +2,8 @@
   <div class="posts">
     <div
       class="post"
-      *ngFor="let t of tiles; let i = index"
-      [routerLink]="['list', i]"
+      *ngFor="let t of tileNames$ | async; let i = index"
+      [routerLink]="['list', t]"
     >
       <lists-tile></lists-tile>
     </div>

@@ -5,12 +5,10 @@
       <li>
         <a class="list-item">Name</a>
         <a class="list-item">Preis</a>
-        <a class="list-item">Anzahl</a>
       </li>
       <li *ngFor="let itm of data$ | async">
         <a class="list-item">{{ itm.name }}</a>
         <a class="list-item">{{ itm.preis | currency: "EUR" }}</a>
-        <a class="list-item">{{ itm.anzahl }}</a>
       </li>
     </ul>
   </div>

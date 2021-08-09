@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from '../data.service';
-import { ItemsComponent } from '../items/items.component';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DataService, Item } from '../data.service';
 
 @Component({
   selector: 'lists-list',
@@ -53,10 +55,17 @@ export class ListComponent implements OnInit {
     },
   ];
 
-  checkItem(itm: Item) {
-    itm.erledigt = !itm.erledigt;
+  date = new Date();
+  items$: Observable<Item[]> = this.service.lists$.pipe(
+    map((data) => data[this.route.snapshot.params.id])
+  );
+  checkItem(item: Item, index: number) {
+    item.erledigt = !item.erledigt;
+    this.service.updateItemList(this.route.snapshot.params.id, item, index);
   }
-  constructor() {}
+  constructor(private route: ActivatedRoute, private service: DataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.route);
+  }
 }
