@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TileComponent } from './tile/tile.component';
 import { ListComponent } from './list/list.component';
 import { ItemsComponent } from './items/items.component';
+import { InputModalComponent } from './input-modal/input-modal.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ItemsComponent } from './items/items.component';
     DashboardComponent,
     TileComponent,
     ListComponent,
-    ItemsComponent
+    ItemsComponent,
+    InputModalComponent
   ],
   imports: [
     BrowserModule,

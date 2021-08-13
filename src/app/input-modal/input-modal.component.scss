@@ -1,0 +1,95 @@
+/* Modal popup: */
+.flex {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 250px;
+  height: 100%;
+
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  .modal {
+    background: #252d2f;
+    display: block;
+    pointer-events: auto;
+    max-width: 85%;
+    // padding-left: 7%;
+    // padding-right: 7%;
+    padding: 15px;
+    border: 2px solid #777;
+    .modal-container {
+      display: block;
+      .modal-header {
+        display: flex;
+        color: #48b3fa;
+        justify-content: space-between;
+        font-size: 1.2em;
+        margin-bottom: 0.7em;
+        .btnX {
+          color: #f50ce1;
+          &:before {
+            content: "\2716";
+          }
+          &:hover {
+            color: #000;
+            cursor: pointer;
+          }
+        }
+      }
+      .modal-content {
+        display: flex;
+        form {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+        }
+
+        // ==== Design
+        form {
+          width: 440px;
+          background: #cecece;
+          margin-bottom: 20px;
+          padding: 10px;
+          margin-right: 20px;
+        }
+
+        label {
+          display: block;
+        }
+        input,
+        textarea {
+          margin-bottom: 10px;
+          border: none;
+          height: 40px;
+          line-height: 40px;
+          margin-top: 5px;
+        }
+        textarea {
+          height: 150px;
+        }
+
+        button[type="submit"] {
+          margin-bottom: 10px;
+          font-size: 1.2em;
+          border: none;
+          height: 40px;
+          line-height: 40px;
+          margin-top: 5px;
+          border: none;
+          background-color: #f50ce1;
+          width: 100%;
+          display: block;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 480px) {
+  .flex {
+    top: 80px;
+  }
+}

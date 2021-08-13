@@ -1,13 +1,3 @@
 <lists-nav></lists-nav>
 <router-outlet></router-outlet>
-
-<div id="open-modal" class="modal-window">
-  <div>
-    <a href="#" title="Close" class="modal-close">Close</a>
-    <h1>Voilà!</h1>
-    <div>
-      A CSS-only modal based on the :target pseudo-class. Hope you find it
-      helpful.
-    </div>
-  </div>
-</div>
+<lists-input-modal [(display)]="modalopen"></lists-input-modal>
