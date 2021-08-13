@@ -1,3 +1,4 @@
+@import "/src/colors";
 /* Modal popup: */
 .flex {
   position: absolute;
@@ -13,29 +14,29 @@
   flex-direction: column;
   padding: 2em;
   .modal {
-    background: #252d2f;
+    background: $background-color;
     display: block;
     pointer-events: auto;
     max-width: 85%;
     // padding-left: 7%;
     // padding-right: 7%;
     padding: 15px;
-    border: 2px solid #777;
+    border: 2px solid $border-grey;
     .modal-container {
       display: block;
       .modal-header {
         display: flex;
-        color: #48b3fa;
+        color: $blue-eye;
         justify-content: space-between;
         font-size: 1.2em;
         margin-bottom: 0.7em;
         .btnX {
-          color: #f50ce1;
+          color: $real-hotpink;
           &:before {
             content: "\2716";
           }
           &:hover {
-            color: #000;
+            color: $background-color;
             cursor: pointer;
           }
         }
@@ -51,7 +52,7 @@
         // ==== Design
         form {
           width: 440px;
-          background: #cecece;
+          background: $grey;
           margin-bottom: 20px;
           padding: 10px;
           margin-right: 20px;
@@ -80,7 +81,7 @@
           line-height: 40px;
           margin-top: 5px;
           border: none;
-          background-color: #f50ce1;
+          background-color: $pi;
           width: 100%;
           display: block;
         }

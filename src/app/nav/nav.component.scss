@@ -1,7 +1,8 @@
+@import "/src/colors";
 .header {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  border: 1px solid #a2a2a2;
+  border: 1px solid $border-grey;
   -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
@@ -13,14 +14,13 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: #252d2f;
+  background-color: $background-color;
 
   .logo {
     margin: 0;
     font-size: 1.65em;
     a {
-      color: #f50ce1;
-      // color: #fa48a1;
+      color: $real-hotpink;
       padding: 10px 15px;
       text-transform: uppercase;
       text-align: center;
@@ -31,9 +31,7 @@
   .main-nav {
     margin-top: 5px;
     a {
-      color: #48b3fa;
-      // color: #c5fa48;
-      // color: #f50ce1;
+      color: $blue-eye;
       padding: 10px 15px;
       text-transform: uppercase;
       text-align: center;
