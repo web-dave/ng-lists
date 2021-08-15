@@ -71,7 +71,6 @@ export class ListComponent implements OnInit {
   ) {}
   openModal() {
     this.modalService.display('LISTEDITEMS');
-    // this.modalService.modalopen$.next(true);
   }
 
   ngOnInit(): void {

@@ -6,18 +6,32 @@
         <div class="btnX" (click)="close()"></div>
       </div>
       <div class="modal-content">
-        <form action="/" class="vertical">
+        <form [formGroup]="modalForm" class="vertical">
           <label for="name">Name:</label>
-          <input id="name" type="text" />
+          <input id="name" formControlName="name" type="text" />
 
-          <label for="count">Count:</label>
-          <input id="count" type="number" />
+          <label *ngIf="context === 'LISTEDITEMS'" for="count">Count:</label>
+          <input
+            *ngIf="context === 'LISTEDITEMS'"
+            id="count"
+            formControlName="count"
+            type="number"
+          />
 
-          <label *ngIf="context === 'LISTEDITEMS'" for="prize">Prize:</label>
-          <input *ngIf="context === 'LISTEDITEMS'" id="prize" type="number" />
+          <label
+            *ngIf="context === 'LISTEDITEMS' || context === 'ITEMS'"
+            for="prize"
+            >Prize:</label
+          >
+          <input
+            *ngIf="context === 'LISTEDITEMS' || context === 'ITEMS'"
+            id="prize"
+            formControlName="prize"
+            type="number"
+          />
           <!-- <label for="comment">Kommentar:</label>
           <textarea id="comment"></textarea> -->
-          <button type="submit">Save</button>
+          <button type="submit" (click)="saveItem()">Save</button>
         </form>
       </div>
     </div>

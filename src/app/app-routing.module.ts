@@ -6,11 +6,11 @@ import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'lists',
     component: DashboardComponent,
   },
   {
-    path: 'list/:id',
+    path: 'lists/:id',
     component: ListComponent,
   },
   {

@@ -51,15 +51,14 @@ export class DataService {
     this.itemsBS$.next(this.items);
   }
 
-  addItem(name: string, prize?: string) {
-    const item: Item = {
-      name,
-    };
-    if (prize) {
-      item.prize = parseFloat(prize);
-    }
+  addItem(item: Item) {
     this.items.push(item);
     this.itemsBS$.next(this.items);
+  }
+
+  addItemToList(list: string, item: ListedItem) {
+    this.lists[list].push(item);
+    this.listsBS$.next(this.lists);
   }
 
   updateItemList(list: string, item: ListedItem, index: number) {

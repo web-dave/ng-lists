@@ -3,7 +3,7 @@
     <div
       class="post"
       *ngFor="let t of tileNames$ | async; let i = index"
-      [routerLink]="['list', t]"
+      [routerLink]="[t]"
     >
       <lists-tile></lists-tile>
     </div>

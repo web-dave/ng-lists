@@ -10,6 +10,6 @@ import { ModalService } from './input-modal/modal.service';
 export class AppComponent {
   title = 'ng-lists';
   constructor(private router: Router, private modalService: ModalService) {
-    this.router.events.subscribe((data) => this.modalService.display('none'));
+    this.router.events.subscribe(() => this.modalService.display('none'));
   }
 }
