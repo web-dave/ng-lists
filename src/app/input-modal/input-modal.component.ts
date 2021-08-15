@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { ModalService } from './modal.service';
 
 @Component({
   selector: 'lists-input-modal',
@@ -6,12 +9,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./input-modal.component.scss'],
 })
 export class InputModalComponent implements OnInit {
-  @Input() display = true;
-  @Output() displayChange = new EventEmitter<boolean>();
-  constructor() {}
+  display$!: Observable<boolean>;
+  constructor(private modalService: ModalService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.display$ = this.modalService.modalopen$.pipe(
+      tap(() => console.log(this.modalService.mode))
+    );
+  }
   close() {
-    this.displayChange.emit(false);
+    this.modalService.modalopen$.next(false);
   }
 }

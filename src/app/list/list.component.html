@@ -1,7 +1,7 @@
 <div class="block">
   <div class="info">Name</div>
 
-  <a class="btn"></a>
+  <a class="btn" (click)="openModal()"></a>
   <div class="list">
     <ul>
       <li *ngFor="let itm of items$ | async; let i = index">

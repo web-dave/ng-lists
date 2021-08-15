@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DataService, ListedItem } from '../data.service';
+import { ModalService } from '../input-modal/modal.service';
 
 @Component({
   selector: 'lists-items',
@@ -9,5 +10,11 @@ import { DataService, ListedItem } from '../data.service';
 })
 export class ItemsComponent {
   data$ = this.service.items$;
-  constructor(private service: DataService) {}
+  constructor(
+    private service: DataService,
+    private modalService: ModalService
+  ) {}
+  openModal() {
+    this.modalService.display('ITEMS');
+  }
 }

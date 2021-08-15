@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService, ListedItem } from '../data.service';
+import { ModalService } from '../input-modal/modal.service';
 
 @Component({
   selector: 'lists-list',
@@ -63,7 +64,15 @@ export class ListComponent implements OnInit {
     item.done = !item.done;
     this.service.updateItemList(this.route.snapshot.params.id, item, index);
   }
-  constructor(private route: ActivatedRoute, private service: DataService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private service: DataService,
+    private modalService: ModalService
+  ) {}
+  openModal() {
+    this.modalService.display('LISTEDITEMS');
+    // this.modalService.modalopen$.next(true);
+  }
 
   ngOnInit(): void {
     console.log(this.route);
