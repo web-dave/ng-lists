@@ -8,7 +8,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { DataService } from '../data.service';
+import { DataService, Item } from '../data.service';
 import { ModalService } from './modal.service';
 
 @Component({
@@ -21,6 +21,7 @@ export class InputModalComponent implements OnInit {
   context: 'none' | 'LISTS' | 'ITEMS' | 'LISTEDITEMS' = 'none';
   modalForm: FormGroup = this.formBuilder.group({});
   listName = '';
+  items: Item[] = [];
   constructor(
     private modalService: ModalService,
     private formBuilder: FormBuilder,
@@ -42,6 +43,7 @@ export class InputModalComponent implements OnInit {
           }
           if (this.context === 'LISTEDITEMS') {
             this.listName = this.route.snapshot.firstChild?.params.id;
+            this.items = this.service.getList(this.listName);
             this.modalForm.addControl('prize', new FormControl(0));
             this.modalForm.addControl('count', new FormControl(0));
             this.modalForm.addControl('done', new FormControl(false));

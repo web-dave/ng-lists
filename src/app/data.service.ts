@@ -56,6 +56,10 @@ export class DataService {
     this.itemsBS$.next(this.items);
   }
 
+  getList(list: string) {
+    return this.lists[list];
+  }
+
   addItemToList(list: string, item: ListedItem) {
     this.lists[list].push(item);
     this.listsBS$.next(this.lists);

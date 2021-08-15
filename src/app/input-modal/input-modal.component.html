@@ -8,7 +8,18 @@
       <div class="modal-content">
         <form [formGroup]="modalForm" class="vertical">
           <label for="name">Name:</label>
-          <input id="name" formControlName="name" type="text" />
+          <input
+            id="name"
+            *ngIf="context === 'ITEMS'"
+            formControlName="name"
+            type="text"
+          />
+          <select formControlName="name" *ngIf="context === 'LISTEDITEMS'">
+            <option [ngValue]="null" disabled>Select Item</option>
+            <option *ngFor="let item of items" [ngValue]="item.name">
+              {{ item.name }}
+            </option>
+          </select>
 
           <label *ngIf="context === 'LISTEDITEMS'" for="count">Count:</label>
           <input
