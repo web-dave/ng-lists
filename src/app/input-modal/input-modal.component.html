@@ -2,19 +2,21 @@
   <div class="modal">
     <div class="modal-container">
       <div class="modal-header">
-        <div class="title"><u>Africa</u></div>
+        <div class="title"><u *ngIf="context === 'LISTEDITEMS'">Africa</u></div>
         <div class="btnX" (click)="close()"></div>
       </div>
       <div class="modal-content">
         <form action="/" class="vertical">
-          <label for="vorname">Vorname:</label>
-          <input id="vorname" type="text" /> <label for="name">Name:</label>
-          <input id="name" type="text" /> <label for="email">Email:</label>
-          <input id="email" type="email" />
-          <label for="website">Website:</label>
-          <input id="website" type="url" />
-          <label for="comment">Kommentar:</label>
-          <textarea id="comment"></textarea>
+          <label for="name">Name:</label>
+          <input id="name" type="text" />
+
+          <label for="count">Count:</label>
+          <input id="count" type="number" />
+
+          <label *ngIf="context === 'LISTEDITEMS'" for="prize">Prize:</label>
+          <input *ngIf="context === 'LISTEDITEMS'" id="prize" type="number" />
+          <!-- <label for="comment">Kommentar:</label>
+          <textarea id="comment"></textarea> -->
           <button type="submit">Save</button>
         </form>
       </div>

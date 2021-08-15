@@ -10,11 +10,14 @@ import { ModalService } from './modal.service';
 })
 export class InputModalComponent implements OnInit {
   display$!: Observable<boolean>;
+  context: 'none' | 'LISTS' | 'ITEMS' | 'LISTEDITEMS' = 'none';
   constructor(private modalService: ModalService) {}
 
   ngOnInit(): void {
     this.display$ = this.modalService.modalopen$.pipe(
-      tap(() => console.log(this.modalService.mode))
+      tap(() => {
+        this.context = this.modalService.mode;
+      })
     );
   }
   close() {
