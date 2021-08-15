@@ -1,12 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 export interface Item {
   name: string;
-  anzahl: number;
-  preis: number;
-  erledigt: boolean;
+  prize?: number;
+}
+export interface ListedItem extends Item {
+  name: string;
+  count?: number;
+  prize?: number;
+  done: boolean;
 }
 
 @Injectable({
@@ -21,8 +25,8 @@ export class DataService {
       tap((data) => localStorage.setItem('itemList', JSON.stringify(data)))
     );
 
-  private lists: { [name: string]: Item[] } = {};
-  private listsBS$ = new BehaviorSubject<{ [name: string]: Item[] }>({});
+  private lists: { [name: string]: ListedItem[] } = {};
+  private listsBS$ = new BehaviorSubject<{ [name: string]: ListedItem[] }>({});
   public lists$ = this.listsBS$
     .asObservable()
     .pipe(tap((data) => localStorage.setItem('lists', JSON.stringify(data))));
@@ -47,18 +51,18 @@ export class DataService {
     this.itemsBS$.next(this.items);
   }
 
-  addItem(name: string, anzahl: string, preis: string) {
-    this.items.push({
+  addItem(name: string, prize?: string) {
+    const item: Item = {
       name,
-      anzahl: parseInt(anzahl, 10),
-      preis: parseFloat(preis),
-      erledigt: false,
-    });
-    // this.modalVisible = 'none';
+    };
+    if (prize) {
+      item.prize = parseFloat(prize);
+    }
+    this.items.push(item);
     this.itemsBS$.next(this.items);
   }
 
-  updateItemList(list: string, item: Item, index: number) {
+  updateItemList(list: string, item: ListedItem, index: number) {
     // Das element in der richtigen liste finden und ersetzten
     this.lists[list][index] = item;
     this.listsBS$.next(this.lists);

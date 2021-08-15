@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { DataService, Item } from '../data.service';
+import { DataService, ListedItem } from '../data.service';
 
 @Component({
   selector: 'lists-dashboard',
@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   tileNames$: Observable<string[]> = this.service.lists$.pipe(
     map((data) => Object.keys(data))
   );
-  lists$: Observable<{ [name: string]: Item[] }> = this.service.lists$;
+  lists$: Observable<{ [name: string]: ListedItem[] }> = this.service.lists$;
   constructor(private service: DataService) {}
 
   ngOnInit(): void {}

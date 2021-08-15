@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { DataService, Item } from '../data.service';
+import { DataService, ListedItem } from '../data.service';
 
 @Component({
   selector: 'lists-list',
@@ -10,57 +10,57 @@ import { DataService, Item } from '../data.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  data: Item[] = [
+  data: ListedItem[] = [
     {
       name: 'By new sweatshirt',
-      anzahl: 1,
-      preis: 2.99,
-      erledigt: false,
+      count: 1,
+      prize: 2.99,
+      done: false,
     },
     {
       name: 'Begin promotional phase',
-      anzahl: 1,
-      preis: 2.99,
-      erledigt: false,
+      count: 1,
+      prize: 2.99,
+      done: false,
     },
     {
       name: 'Read an article',
-      anzahl: 1,
-      preis: 2.99,
-      erledigt: false,
+      count: 1,
+      prize: 2.99,
+      done: false,
     },
     {
       name: 'Try not to fall asleep',
-      anzahl: 1,
-      preis: 2.99,
-      erledigt: false,
+      count: 1,
+      prize: 2.99,
+      done: false,
     },
     {
       name: 'Watch "Sherlock"',
-      anzahl: 1,
-      preis: 2.99,
-      erledigt: false,
+      count: 1,
+      prize: 2.99,
+      done: false,
     },
     {
       name: 'Begin QA for the product',
-      anzahl: 1,
-      preis: 2.99,
-      erledigt: false,
+      count: 1,
+      prize: 2.99,
+      done: false,
     },
     {
       name: 'Go for a walk',
-      anzahl: 1,
-      preis: 2.99,
-      erledigt: false,
+      count: 1,
+      prize: 2.99,
+      done: false,
     },
   ];
 
   date = new Date();
-  items$: Observable<Item[]> = this.service.lists$.pipe(
+  items$: Observable<ListedItem[]> = this.service.lists$.pipe(
     map((data) => data[this.route.snapshot.params.id])
   );
-  checkItem(item: Item, index: number) {
-    item.erledigt = !item.erledigt;
+  checkItem(item: ListedItem, index: number) {
+    item.done = !item.done;
     this.service.updateItemList(this.route.snapshot.params.id, item, index);
   }
   constructor(private route: ActivatedRoute, private service: DataService) {}

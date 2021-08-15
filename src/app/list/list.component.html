@@ -6,9 +6,9 @@
     <ul>
       <li *ngFor="let itm of items$ | async; let i = index">
         <a class="list-item"
-          >{{ itm.name }}&nbsp;{{ itm.preis | currency: "EUR" }}</a
+          >{{ itm.name }}&nbsp;{{ itm.prize | currency: "EUR" }}</a
         >
-        <input type="checkbox" [checked]="itm.erledigt" />
+        <input type="checkbox" [checked]="itm.done" />
         <label (click)="checkItem(itm, i)"></label>
       </li>
     </ul>

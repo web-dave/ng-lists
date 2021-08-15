@@ -8,7 +8,7 @@
       </li>
       <li *ngFor="let itm of data$ | async">
         <a class="list-item">{{ itm.name }}</a>
-        <a class="list-item">{{ itm.preis | currency: "EUR" }}</a>
+        <a class="list-item">{{ itm.prize | currency: "EUR" }}</a>
       </li>
     </ul>
   </div>

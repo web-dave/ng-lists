@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DataService, Item } from '../data.service';
+import { DataService, ListedItem } from '../data.service';
 
 @Component({
   selector: 'lists-items',

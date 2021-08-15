@@ -10,9 +10,7 @@ export class InputModalComponent implements OnInit {
   @Output() displayChange = new EventEmitter<boolean>();
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(document.body.scrollWidth);
-  }
+  ngOnInit(): void {}
   close() {
     this.displayChange.emit(false);
   }
