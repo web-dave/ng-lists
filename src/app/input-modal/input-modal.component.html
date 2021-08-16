@@ -14,9 +14,16 @@
             formControlName="name"
             type="text"
           />
-          <select formControlName="name" *ngIf="context === 'LISTEDITEMS'">
+          <input
+            id="name"
+            *ngIf="context === 'LISTEDITEMS'"
+            readonly
+            formControlName="name"
+            type="text"
+          />
+          <select [formControl]="itemControl" *ngIf="context === 'LISTEDITEMS'">
             <option [ngValue]="null" disabled>Select Item</option>
-            <option *ngFor="let item of items" [ngValue]="item.name">
+            <option *ngFor="let item of items" [ngValue]="item">
               {{ item.name }}
             </option>
           </select>
@@ -35,14 +42,27 @@
             >Prize:</label
           >
           <input
-            *ngIf="context === 'LISTEDITEMS' || context === 'ITEMS'"
+            *ngIf="context === 'ITEMS'"
             id="prize"
+            formControlName="prize"
+            type="number"
+          />
+          <input
+            *ngIf="context === 'LISTEDITEMS'"
+            id="prize"
+            readonly
             formControlName="prize"
             type="number"
           />
           <!-- <label for="comment">Kommentar:</label>
           <textarea id="comment"></textarea> -->
-          <button type="submit" (click)="saveItem()">Save</button>
+          <button
+            type="submit"
+            [disabled]="!modalForm.valid"
+            (click)="saveItem()"
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>

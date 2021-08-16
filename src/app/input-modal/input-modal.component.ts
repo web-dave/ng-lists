@@ -22,6 +22,7 @@ export class InputModalComponent implements OnInit {
   modalForm: FormGroup = this.formBuilder.group({});
   listName = '';
   items: Item[] = [];
+  itemControl = new FormControl();
   constructor(
     private modalService: ModalService,
     private formBuilder: FormBuilder,
@@ -43,11 +44,15 @@ export class InputModalComponent implements OnInit {
           }
           if (this.context === 'LISTEDITEMS') {
             this.listName = this.route.snapshot.firstChild?.params.id;
-            this.items = this.service.getList(this.listName);
+            this.items = this.service.getItems();
             this.modalForm.addControl('prize', new FormControl(0));
             this.modalForm.addControl('count', new FormControl(0));
             this.modalForm.addControl('done', new FormControl(false));
           }
+          this.itemControl.valueChanges.subscribe((data) => {
+            this.modalForm.get('name')?.setValue(data.name);
+            this.modalForm.get('prize')?.setValue(data.prize);
+          });
         }
       })
     );
