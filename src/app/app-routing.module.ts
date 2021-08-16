@@ -5,7 +5,7 @@ import { ItemsComponent } from './items/items.component';
 import { ListComponent } from './list/list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/lists' },
+  { path: '', redirectTo: '/lists', pathMatch: 'full' },
   {
     path: 'lists',
     component: DashboardComponent,
