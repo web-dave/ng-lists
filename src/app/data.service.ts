@@ -60,6 +60,11 @@ export class DataService {
     return this.items;
   }
 
+  addList(list: string) {
+    this.lists[list] = [];
+    this.listsBS$.next(this.lists);
+  }
+
   addItemToList(list: string, item: ListedItem) {
     this.lists[list].push(item);
     this.listsBS$.next(this.lists);

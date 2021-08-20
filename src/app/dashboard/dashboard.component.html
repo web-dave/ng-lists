@@ -1,11 +1,16 @@
 <div class="container">
   <div class="posts">
+    <div class="post">
+      <ul>
+        <li><span class="btn" (click)="openModal()"></span></li>
+      </ul>
+    </div>
     <div
       class="post"
       *ngFor="let t of tileNames$ | async; let i = index"
       [routerLink]="[t]"
     >
-      <lists-tile></lists-tile>
+      <lists-tile [name]="t" [data]="listedItems(t) | async"></lists-tile>
     </div>
   </div>
 </div>

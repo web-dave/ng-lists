@@ -70,6 +70,8 @@ export class InputModalComponent implements OnInit {
       this.service.addItem(this.modalForm.value);
     } else if (this.context === 'LISTEDITEMS') {
       this.service.addItemToList(this.listName, this.modalForm.value);
+    } else if (this.context === 'LISTS') {
+      this.service.addList(this.modalForm.get('name')?.value);
     }
     this.close();
   }
