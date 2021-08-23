@@ -10,6 +10,8 @@ import { TileComponent } from './tile/tile.component';
 import { ListComponent } from './list/list.component';
 import { ItemsComponent } from './items/items.component';
 import { InputModalComponent } from './input-modal/input-modal.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,17 @@ import { InputModalComponent } from './input-modal/input-modal.component';
     ItemsComponent,
     InputModalComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
