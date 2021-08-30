@@ -21,12 +21,12 @@ export class AppComponent {
       location.reload();
     });
 
-    this.swPush
-      .requestSubscription({
-        serverPublicKey:
-          'BHhBnRwIwW5wAqfmSswFPrLEF4Q2lGFNxrqYUtdX-dDqwKNbYy8zT02GG85kusFsostLlaW0_23uOBj0XFrGvVo',
-      })
-      .then((push) => console.log(push.toJSON()));
+    // this.swPush
+    //   .requestSubscription({
+    //     serverPublicKey:
+    //       'BHhBnRwIwW5wAqfmSswFPrLEF4Q2lGFNxrqYUtdX-dDqwKNbYy8zT02GG85kusFsostLlaW0_23uOBj0XFrGvVo',
+    //   })
+    //   .then((push) => console.log(push.toJSON()));
 
     this.swPush.messages.subscribe((data) => console.log(data));
   }
