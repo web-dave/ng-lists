@@ -1,49 +1,42 @@
 @import "/src/colors";
-.header {
+
+:host {
+  display: block;
+  background-color: $background-color;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   border: 1px solid $border-grey;
-  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 5px;
   flex-direction: row;
   justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: $background-color;
+}
 
-  .logo {
-    margin: 0;
-    font-size: 1.65em;
-    a {
-      color: $real-hotpink;
-      padding: 10px 15px;
-      text-transform: uppercase;
-      text-align: center;
-      display: block;
+.logo {
+  margin: 0;
+  a {
+    color: $real-hotpink;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+  }
+}
+
+.main-nav {
+  margin-top: 5px;
+  a {
+    color: $blue-eye;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    &:hover {
+      text-decoration: underline;
     }
   }
-
-  .main-nav {
-    margin-top: 5px;
-    a {
-      color: $blue-eye;
-      padding: 10px 15px;
-      text-transform: uppercase;
-      text-align: center;
-      display: block;
-      font-size: 1.4em;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-    .active {
-      text-decoration-line: overline;
-    }
+  .active {
+    text-decoration-line: overline;
   }
 }
 
@@ -52,8 +45,13 @@
   ==================================== */
 
 @media (min-width: 480px) {
-  .header,
+  :host {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
   .main-nav {
     display: flex;
+    justify-content: center;
   }
 }
